@@ -40,8 +40,11 @@
             color: white;
             padding: 15px 0;
             box-shadow: var(--shadow);
-            position: relative; /* 改为相对定位 */
-            z-index: 100;
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            z-index: 1000;
         }
         
         .project-title {
@@ -410,6 +413,10 @@
             /* 调整固定导航栏下方的间距 */
             body {
                 padding-top: 100px;
+            }
+                
+            .nav-container {
+                top: 100px; 
             }
             
             /* 调整锚点偏移 */
