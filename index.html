@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RNS 10道路项目 - 招标文件</title>
+    <title>RNS 10 - 沥青铺设项目 | 马达加斯加</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reset & Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -14,1094 +15,892 @@
         }
         
         :root {
-            --primary: #1a5f7a;
-            --secondary: #159895;
-            --accent: #57C5B6;
+            --primary: #006747;
+            --secondary: #f9a01b;
+            --accent: #e63946;
             --light: #f8f9fa;
             --dark: #343a40;
-            --warning: #ffc107;
-            --danger: #dc3545;
-            --success: #28a745;
             --gray: #6c757d;
-            --border: #dee2e6;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s ease;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
             background-color: #f5f7fa;
-            color: var(--dark);
+            color: #333;
             line-height: 1.6;
-            padding-top: 140px; /* 为固定导航栏预留空间 */
+            overflow-x: hidden;
+            position: relative;
+            padding-bottom: 60px; /* 为底部栏留出空间 */
+            min-height: 100vh;
         }
         
-        /* 顶部信息栏 - 不再固定 */
-        .top-info-bar {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 15px 0;
-            box-shadow: var(--shadow);
-            position: fixed;
-            top: 0; 
-            left: 0; 
-            right: 0; 
-            z-index: 1000;
-        }
-        
-        .project-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        
-        .info-cards {
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            width: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .hero-top-bar {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--secondary);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .hero-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
             max-width: 1200px;
-            margin: 0 auto;
+            width: 100%;
+            margin: 2rem auto;
             padding: 0 20px;
         }
         
         .info-card {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            padding: 12px 20px;
-            min-width: 200px;
-            text-align: center;
-            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: left;
+            transition: var(--transition);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         
         .info-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        
-        .info-card p {
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-        
-        .language-warning {
-            background-color: var(--warning);
-            color: var(--dark);
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        /* 导航区 - 固定在顶部 */
-        .nav-container {
-            background-color: white;
-            box-shadow: var(--shadow);
-            position: fixed; /* 改为固定定位 */
-            top: 120px;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 15px 0;
-        }
-        
-        .primary-nav {
-            display: flex;
-            justify-content: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            flex-wrap: wrap; /* 确保小屏幕时换行显示 */
-        }
-        
-        .nav-item {
-            padding: 12px 20px;
-            font-weight: 600;
-            color: var(--gray);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-            text-align: center;
-            flex-shrink: 0; /* 防止导航项被压缩 */
-        }
-        
-        .nav-item:hover, .nav-item.active {
-            color: var(--primary);
-            border-bottom: 3px solid var(--accent);
-        }
-        
-        /* 主容器 */
-        .container {
-            display: flex;
-            max-width: 1400px;
-            margin: 20px auto;
-            padding: 0 20px;
-            gap: 25px;
-        }
-        
-        /* 侧边栏 */
-        .sidebar {
-            width: 280px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            padding: 20px;
-            position: sticky;
-            top: 200px; /* 调整位置以适应固定导航栏 */
-            height: fit-content;
-            max-height: calc(100vh - 220px);
-            overflow-y: auto;
-        }
-        
-        .sidebar-title {
+            color: var(--secondary);
+            margin-bottom: 1rem;
             font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.5rem;
+        }
+        
+        .info-card ul {
+            list-style-type: none;
+        }
+        
+        .info-card li {
+            margin-bottom: 0.8rem;
             display: flex;
+        }
+        
+        .info-card li i {
+            color: var(--secondary);
+            margin-right: 10px;
+            min-width: 20px;
+        }
+        
+        .scroll-prompt {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
+            animation: bounce 2s infinite;
         }
         
-        .sidebar-section {
-            margin-bottom: 25px;
-        }
-        
-        .sidebar-section h3 {
+        .scroll-prompt p {
+            margin-bottom: 10px;
             font-size: 1.1rem;
-            color: var(--dark);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
         
-        .sub-nav {
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: -70px;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+        
+        .navbar.active {
+            top: 0;
+        }
+        
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
             list-style: none;
         }
         
-        .sub-nav li {
-            margin-bottom: 8px;
-            padding-left: 10px;
+        .nav-links li {
             position: relative;
+            margin: 0 15px;
         }
         
-        .sub-nav li:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent);
-            border-radius: 50%;
-        }
-        
-        .sub-nav a {
+        .nav-links a {
             text-decoration: none;
-            color: var(--gray);
-            display: block;
-            padding: 6px 8px;
-            border-radius: 4px;
-            transition: all 0.2s;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 5px 10px;
+            transition: var(--transition);
         }
         
-        .sub-nav a:hover, .sub-nav a.active {
+        .nav-links a:hover {
             color: var(--primary);
-            background-color: rgba(87, 197, 182, 0.1);
         }
         
-        /* 主内容区 */
-        .main-content {
-            flex: 1;
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
             background: white;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
         }
         
-        .content-section {
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--border);
-            /* 为锚点跳转添加偏移 */
-            scroll-margin-top: 150px;
+        .dropdown li {
+            margin: 0;
+            width: 100%;
         }
         
-        .content-section:last-child {
-            border-bottom: none;
+        .dropdown a {
+            display: block;
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .nav-links li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 20px 0;
         }
         
         .section-title {
-            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
             color: var(--primary);
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent);
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            position: relative;
         }
         
-        .subsection {
-            margin-bottom: 30px;
-            background: #f8fafc;
-            border-radius: 10px;
-            padding: 20px;
-            border-left: 4px solid var(--accent);
-            /* 为子锚点跳转添加偏移 */
-            scroll-margin-top: 120px;
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
         }
         
-        .subsection-title {
-            font-size: 1.4rem;
-            color: var(--secondary);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .card-container {
+        /* Cards Layout */
+        .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
         
         .card {
             background: white;
             border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            padding: 20px;
-            transition: transform 0.3s ease;
-            border-top: 3px solid var(--accent);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
         }
         
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
-        .card-title {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
         }
         
-        .card-content {
+        .card-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-header .badge {
+            background: var(--secondary);
             color: var(--dark);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
         }
         
-        .card-content ul {
-            padding-left: 20px;
-            margin-top: 10px;
+        .card-body {
+            padding: 1.5rem;
         }
         
-        .card-content li {
-            margin-bottom: 8px;
+        .card-body h4 {
+            color: var(--primary);
+            margin: 1.2rem 0 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .card-body ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-body li {
+            margin-bottom: 0.5rem;
         }
         
         .highlight {
-            background-color: rgba(255, 193, 7, 0.2);
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-weight: 600;
+            background: #fff9db;
+            border-left: 4px solid var(--secondary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
         }
         
-        .warning-box {
-            background-color: rgba(255, 193, 7, 0.15);
-            border-left: 4px solid var(--warning);
-            padding: 15px;
-            border-radius: 0 8px 8px 0;
-            margin: 20px 0;
-        }
-        
-        .info-table {
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
             width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-        
-        .info-table th {
             background-color: var(--primary);
             color: white;
-            text-align: left;
-            padding: 12px 15px;
+            text-align: center;
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .info-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--border);
+        .footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
         }
         
-        .info-table tr:nth-child(even) {
-            background-color: #f8f9fa;
+        .footer a:hover {
+            color: white;
+            text-decoration: underline;
         }
         
-        .info-table tr:last-child td {
-            border-bottom: none;
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
         }
         
-        /* 移动端适配 */
         @media (max-width: 992px) {
-            .container {
-                flex-direction: column;
+            .card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
             
-            .sidebar {
-                width: 100%;
-                position: relative;
-                top: 0;
-                margin-bottom: 20px;
+            .navbar {
+                padding: 0.8rem 0;
             }
             
-            .info-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .info-card {
-                width: 100%;
-                max-width: 400px;
-            }
-            
-            /* 调整固定导航栏下方的间距 */
-            body {
-                padding-top: 120px;
-            }
-            
-            /* 调整锚点偏移 */
-            .content-section {
-                scroll-margin-top: 140px;
-            }
-            
-            .subsection {
-                scroll-margin-top: 120px;
+            .nav-container {
+                width: 95%;
             }
         }
         
         @media (max-width: 768px) {
-            .project-title {
-                font-size: 1.5rem;
+            .hero {
+                height: auto;
+                padding: 120px 20px 80px;
             }
             
-            .section-title {
-                font-size: 1.5rem;
+            .hero h1 {
+                font-size: 2.2rem;
             }
             
-            .card-container {
+            .hero-info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+                font-size: 1.5rem;
+                color: var(--primary);
+            }
+            
+            .card-grid {
                 grid-template-columns: 1fr;
             }
             
-            /* 小屏幕下导航项调整 */
-            .nav-item {
-                padding: 10px 15px;
-                font-size: 0.9rem;
+            .footer {
+                padding: 10px 0;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
             }
             
-            /* 调整固定导航栏下方的间距 */
-            body {
-                padding-top: 100px;
-            }
-                
-            .nav-container {
-                top: 100px; 
+            .info-card {
+                padding: 1rem;
             }
             
-            /* 调整锚点偏移 */
-            .content-section {
-                scroll-margin-top: 120px;
-            }
-            
-            .subsection {
-                scroll-margin-top: 100px;
+            .footer {
+                font-size: 12px;
             }
         }
         
-        /* 标签样式 */
-        .tag {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-right: 8px;
-            margin-bottom: 8px;
-        }
-        
-        .tag-primary {
-            background-color: rgba(26, 95, 122, 0.15);
-            color: var(--primary);
-        }
-        
-        .tag-warning {
-            background-color: rgba(255, 193, 7, 0.15);
-            color: #b58a00;
-        }
-        
-        .tag-success {
-            background-color: rgba(40, 167, 69, 0.15);
-            color: #1e7e34;
-        }
-        
-        .tag-danger {
-            background-color: rgba(220, 53, 69, 0.15);
-            color: var(--danger);
-        }
-        
-        .progress-container {
-            margin: 20px 0;
-        }
-        
-        .progress-bar {
-            height: 8px;
-            background-color: #e9ecef;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 5px;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), var(--secondary));
-            border-radius: 4px;
-        }
-        
-        .progress-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-        
-        /* 返回顶部按钮 */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-        }
-        
-        .back-to-top:hover {
-            background: var(--secondary);
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 顶部信息栏 - 不再固定 -->
-    <div class="top-info-bar">
-        <div class="project-title">
-            <i class="fas fa-road"></i> 10号二级国道（RNS 10）Andranovory至Ampanihy段沥青铺设工程
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-top-bar">
+            国际招标 | 马达加斯加包容性增长互联互通项目（PCMCI）
         </div>
-        <div class="info-cards">
+        
+        <h1>10号国道支线（RNS 10）- Andranovory至Ampanihy段沥青铺设工程</h1>
+        
+        <div class="hero-info-grid">
+            <div class="info-card">
+                <h3><i class="fas fa-info-circle"></i> 关键信息</h3>
+                <ul>
+                    <li><i class="fas fa-building"></i> <strong>业主单位:</strong> 公共工程部</li>
+                    <li><i class="fas fa-road"></i> <strong>执行机构:</strong> 道路管理局</li>
+                    <li><i class="fas fa-money-bill-wave"></i> <strong>资金来源:</strong> 国际开发协会（IDA）</li>
+                    <li><i class="fas fa-dollar-sign"></i> <strong>项目总额:</strong> 4亿美元</li>
+                </ul>
+            </div>
+            
             <div class="info-card">
                 <h3><i class="fas fa-map-marked-alt"></i> 标段划分</h3>
-                <p>Lot 1: 98公里 | Lot 2: 114公里</p>
-            </div>
-            <div class="info-card">
-                <h3><i class="fas fa-clock"></i> 投标截止</h3>
-                <p>2025年8月20日 09:30 (GMT+3)</p>
-            </div>
-            <div class="info-card">
-                <h3><i class="fas fa-money-bill-wave"></i> 资金来源</h3>
-                <p>国际开发协会（IDA）4亿美元</p>
-            </div>
-            <div class="info-card language-warning">
-                <i class="fas fa-language"></i>
-                <p>所有文件需使用法语</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- 一级导航 - 固定在顶部 -->
-    <div class="nav-container">
-        <div class="primary-nav">
-            <div class="nav-item active" data-target="section-summary">文件总结</div>
-            <div class="nav-item" data-target="section-notes">编写注意</div>
-            <div class="nav-item" data-target="section-outline">投标文件大纲</div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <!-- 侧边栏导航 -->
-        <div class="sidebar">
-            <div class="sidebar-title">
-                <i class="fas fa-file-alt"></i> 文件目录
-            </div>
-            
-            <div class="sidebar-section">
-                <h3><i class="fas fa-info-circle"></i> 文件总结</h3>
-                <ul class="sub-nav">
-                    <li><a href="#1.1" class="active">基础信息与说明</a></li>
-                    <li><a href="#1.2">投标程序</a></li>
-                    <li><a href="#1.3">工程规范</a></li>
-                    <li><a href="#1.4">合同条款与格式</a></li>
+                <ul>
+                    <li><i class="fas fa-road"></i> <strong>标段1:</strong> Andranovory (PK 4+000) - Ambatry (PK 101+990) ~98公里</li>
+                    <li><i class="fas fa-road"></i> <strong>标段2:</strong> Ambatry (PK 101+990) - Ampanihy (PK 215+700) ~114公里</li>
+                    <li><i class="fas fa-calendar-alt"></i> <strong>合同期限:</strong> 每标段24个月</li>
                 </ul>
             </div>
             
-            <div class="sidebar-section">
-                <h3><i class="fas fa-exclamation-circle"></i> 编写注意</h3>
-                <ul class="sub-nav">
-                    <li><a href="#2.1">资格证明文件</a></li>
-                    <li><a href="#2.2">技术方案要求</a></li>
-                    <li><a href="#2.3">财务报价要求</a></li>
-                    <li><a href="#2.4">格式与合规性</a></li>
-                </ul>
-            </div>
-            
-            <div class="sidebar-section">
-                <h3><i class="fas fa-folder-open"></i> 投标文件大纲</h3>
-                <ul class="sub-nav">
-                    <li><a href="#3.1">技术部分大纲</a></li>
-                    <li><a href="#3.2">财务部分大纲</a></li>
-                    <li><a href="#3.3">格式与提交要求</a></li>
+            <div class="info-card">
+                <h3><i class="fas fa-calendar-check"></i> 时间安排</h3>
+                <ul>
+                    <li><i class="fas fa-flag"></i> <strong>招标发布日期:</strong> 2025年7月4日</li>
+                    <li><i class="fas fa-clock"></i> <strong>投标截止时间:</strong> 2025年8月20日 09:30 (GMT+3)</li>
+                    <li><i class="fas fa-language"></i> <strong>投标语言:</strong> 法语</li>
+                    <li><i class="fas fa-gavel"></i> <strong>招标程序:</strong> 双信封（技术+财务）</li>
                 </ul>
             </div>
         </div>
         
-        <!-- 主内容区 -->
-        <div class="main-content">
-            <!-- 文件总结部分 -->
-            <div id="section-summary" class="content-section">
-                <h2 class="section-title">
-                    <i class="fas fa-file-contract"></i> 文件总结
-                </h2>
-                
-                <div id="1.1" class="subsection">
-                    <h3 class="subsection-title">
-                        <i class="fas fa-info-circle"></i> 1.1 基础信息与说明
-                    </h3>
-                    
-                    <div class="card-container">
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-building"></i> 雇主与执行机构</h4>
-                            <div class="card-content">
-                                <p><strong>雇主:</strong> 马达加斯加公共工程部</p>
-                                <p><strong>执行机构:</strong> 公路局 (Road Agency)</p>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-road"></i> 项目标段</h4>
-                            <div class="card-content">
-                                <p><strong>Lot 1:</strong> Andranovory (PK 4+000) - Ambatry (PK 101+990) 约98公里</p>
-                                <p><strong>Lot 2:</strong> Ambatry (PK 101+990) - Ampanihy (PK 215+700) 约114公里</p>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-money-check"></i> 资金来源</h4>
-                            <div class="card-content">
-                                <p>国际开发协会 (IDA)</p>
-                                <p>信贷: No.7060-MG</p>
-                                <p>赠款: No.D982-MG</p>
-                                <p>总金额: <span class="highlight">4亿美元</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="warning-box">
-                        <i class="fas fa-exclamation-triangle"></i> <strong>重要提示:</strong> 
-                        投标语言为法语，所有文件及沟通需使用法语
-                    </div>
-                    
-                    <div id="1.2" class="subsection">
-                        <h3 class="subsection-title">
-                            <i class="fas fa-clipboard-list"></i> 1.2 投标程序
-                        </h3>
-                        
-                        <div class="card-container">
-                            <div class="card">
-                                <h4 class="card-title"><i class="fas fa-envelope"></i> 两信封制</h4>
-                                <div class="card-content">
-                                    <p>技术文件与财务文件分别密封</p>
-                                    <ul>
-                                        <li>先开技术标</li>
-                                        <li>再开财务标</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="card">
-                                <h4 class="card-title"><i class="fas fa-user-check"></i> 投标人资格</h4>
-                                <div class="card-content">
-                                    <ul>
-                                        <li>私营/公营企业或联合体</li>
-                                        <li>无利益冲突</li>
-                                        <li>未被世界银行制裁</li>
-                                        <li>公共企业需证明法律与财务自治</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="card">
-                                <h4 class="card-title"><i class="fas fa-shield-alt"></i> 投标保证金</h4>
-                                <div class="card-content">
-                                    <p><strong>Lot 1:</strong> 45亿阿里亚里</p>
-                                    <p><strong>Lot 2:</strong> 50亿阿里亚里</p>
-                                    <p>有效期为投标有效期后28天</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <h4 style="margin: 20px 0 15px; color: var(--primary);">技术评估标准</h4>
-                        
-                        <table class="info-table">
-                            <thead>
-                                <tr>
-                                    <th>评估项目</th>
-                                    <th>权重</th>
-                                    <th>关键要素</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>施工方法</td>
-                                    <td>25%</td>
-                                    <td>整体方案、对特定工程部分的理解</td>
-                                </tr>
-                                <tr>
-                                    <td>进度与资源动员</td>
-                                    <td>25%</td>
-                                    <td>整体计划、人员与设备动员</td>
-                                </tr>
-                                <tr>
-                                    <td>环境管理策略</td>
-                                    <td>15%</td>
-                                    <td>质量管控、环境管理、道路安全</td>
-                                </tr>
-                                <tr>
-                                    <td>社会管理策略</td>
-                                    <td>10%</td>
-                                    <td>劳工管理、行为准则、性别平等</td>
-                                </tr>
-                                <tr>
-                                    <td>现场管理</td>
-                                    <td>25%</td>
-                                    <td>管理能力、关键人员资质、风险管理</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-                        <div class="warning-box" style="margin-top: 20px;">
-                            <i class="fas fa-exclamation-circle"></i> 
-                            <strong>最低合格分数:</strong> 75/100，低于此分数将被淘汰
-                        </div>
-                    </div>
-                    
-                    <div id="1.3" class="subsection">
-                        <h3 class="subsection-title">
-                            <i class="fas fa-book"></i> 1.3 工程规范
-                        </h3>
-                        
-                        <div class="card-container">
-                            <div class="card">
-                                <h4 class="card-title"><i class="fas fa-layer-group"></i> 技术规范标准</h4>
-                                <div class="card-content">
-                                    <ul>
-                                        <li>遵守马达加斯加国家道路标准</li>
-                                        <li>符合世界银行环境和社会保障框架</li>
-                                        <li>使用BS EN 13108沥青混合料规范</li>
-                                        <li>参照法国桥梁道路工程规范</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="card">
-                                <h4 class="card-title"><i class="fas fa-tasks"></i> 关键工程要求</h4>
-                                <div class="card-content">
-                                    <ul>
-                                        <li>路基宽度：10米</li>
-                                        <li>行车道宽度：2×3.5米</li>
-                                        <li>沥青厚度：≥5厘米</li>
-                                        <li>设计寿命：≥15年</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="card">
-                                <h4 class="card-title"><i class="fas fa-tree"></i> 环境与社会要求</h4>
-                                <div class="card-content">
-                                    <ul>
-                                        <li>制定环境管理计划(EMP)</li>
-                                        <li>实施社区参与计划(CEP)</li>
-                                        <li>保护沿线敏感生态区域</li>
-                                        <li>恢复施工造成的植被破坏</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 编写注意部分 -->
-            <div id="section-notes" class="content-section">
-                <h2 class="section-title">
-                    <i class="fas fa-exclamation-triangle"></i> 编写注意
-                </h2>
-                
-                <div id="2.1" class="subsection">
-                    <h3 class="subsection-title">
-                        <i class="fas fa-file-certificate"></i> 2.1 资格证明文件需完整且符合要求
-                    </h3>
-                    
-                    <div class="card-container">
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-file-invoice-dollar"></i> 财务文件要求</h4>
-                            <div class="card-content">
-                                <ul>
-                                    <li>近3年经审计的财务报表</li>
-                                    <li>流动资金证明由银行出具</li>
-                                    <li>金额按投标截止前15天汇率换算</li>
-                                    <li>年营业额按"已认证付款"计算</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-hard-hat"></i> 技术经验要求</h4>
-                            <div class="card-content">
-                                <ul>
-                                    <li>近8年完成至少3个类似项目</li>
-                                    <li>每合同金额≥2350亿阿里亚里</li>
-                                    <li>含≥60公里沥青路及≥30米桥梁</li>
-                                    <li>关键工程活动经验需单独列明</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-users"></i> 人员与设备要求</h4>
-                            <div class="card-content">
-                                <ul>
-                                    <li>关键人员简历附学历证明</li>
-                                    <li>项目经验需雇主推荐信</li>
-                                    <li>设备清单注明型号、数量</li>
-                                    <li>租赁设备需附租赁协议</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="2.2" class="subsection">
-                    <h3 class="subsection-title">
-                        <i class="fas fa-tasks"></i> 2.2 技术方案需针对性响应评估标准
-                    </h3>
-                    
-                    <div class="card-container">
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-tools"></i> 施工方法</h4>
-                            <div class="card-content">
-                                <ul>
-                                    <li>详细说明沥青铺设工艺</li>
-                                    <li>引用招标文件技术规范条款</li>
-                                    <li>针对项目难点提出解决方案</li>
-                                    <li>附风险缓解措施</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-chart-line"></i> 进度计划</h4>
-                            <div class="card-content">
-                                <ul>
-                                    <li>甘特图标注关键节点</li>
-                                    <li>总工期≤24个月</li>
-                                    <li>资源动员与进度匹配</li>
-                                    <li>避免人员/设备闲置</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-leaf"></i> 环境与社会方案</h4>
-                            <div class="card-content">
-                                <ul>
-                                    <li>污染监测计划</li>
-                                    <li>生态保护措施</li>
-                                    <li>本地劳工招聘计划</li>
-                                    <li>反SEA/SH行为准则</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="2.3" class="subsection">
-                    <h3 class="subsection-title">
-                        <i class="fas fa-file-invoice-dollar"></i> 2.3 财务报价要求
-                    </h3>
-                    
-                    <div class="card-container">
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-money-bill-wave"></i> 报价货币</h4>
-                            <div class="card-content">
-                                <ul>
-                                    <li>本地货币：阿里亚里(MGA)</li>
-                                    <li>外汇：美元(USD)或欧元(EUR)</li>
-                                    <li>汇率使用投标截止前28天央行汇率</li>
-                                    <li>报价包含所有税费</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-percentage"></i> 价格调整公式</h4>
-                            <div class="card-content">
-                                <p>Pn = a + b(Ln/Lo) + c(En/Eo) + d(Mn/Mo)</p>
-                                <p>其中：</p>
-                                <ul>
-                                    <li>a = 0.15（固定部分）</li>
-                                    <li>b+c+d = 0.85（可调部分）</li>
-                                    <li>L：劳动力价格指数</li>
-                                    <li>E：设备价格指数</li>
-                                    <li>M：材料价格指数</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-exclamation-circle"></i> 常见错误规避</h4>
-                            <div class="card-content">
-                                <ul>
-                                    <li>算术错误将导致报价无效</li>
-                                    <li>未填写单价的项目视为已包含在其他项目中</li>
-                                    <li>折扣说明必须清晰明确</li>
-                                    <li>暂列金额按招标文件要求填写</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 投标文件大纲部分 -->
-            <div id="section-outline" class="content-section">
-                <h2 class="section-title">
-                    <i class="fas fa-folder"></i> 投标文件大纲
-                </h2>
-                
-                <div id="3.1" class="subsection">
-                    <h3 class="subsection-title">
-                        <i class="fas fa-envelope-open-text"></i> 3.1 第一信封：技术部分大纲
-                    </h3>
-                    
-                    <div class="card-container">
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-file-signature"></i> 投标函</h4>
-                            <div class="card-content">
-                                <p>投标人抬头纸出具</p>
-                                <p>包含投标编号、标段、投标日期</p>
-                                <p>声明符合投标人资格</p>
-                                <p>附授权代表授权书（需公证）</p>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-id-card"></i> 资格证明文件</h4>
-                            <div class="card-content">
-                                <ul>
-                                    <li>公司基本信息</li>
-                                    <li>财务资格证明</li>
-                                    <li>技术经验证明</li>
-                                    <li>关键人员资质</li>
-                                    <li>设备清单</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-project-diagram"></i> 技术方案</h4>
-                            <div class="card-content">
-                                <p>施工方法与整体思路 (25分)</p>
-                                <p>进度计划与资源动员 (25分)</p>
-                                <p>环境管理策略 (15分)</p>
-                                <p>社会管理策略 (10分)</p>
-                                <p>现场管理与风险管理 (25分)</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="3.2" class="subsection">
-                    <h3 class="subsection-title">
-                        <i class="fas fa-file-invoice"></i> 3.2 第二信封：财务部分大纲
-                    </h3>
-                    
-                    <div class="card-container">
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-money-bill-wave"></i> 财务投标函</h4>
-                            <div class="card-content">
-                                <p>声明投标总报价</p>
-                                <p>区分本地货币与外汇</p>
-                                <p>折扣说明（如有）</p>
-                                <p>承诺包含所有税费</p>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-table"></i> 价格表</h4>
-                            <div class="card-content">
-                                <p>按招标文件格式填写</p>
-                                <p>分部分项工程名称、单位、数量</p>
-                                <p>单价、总价</p>
-                                <p>暂列金额</p>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-calculator"></i> 价格调整表</h4>
-                            <div class="card-content">
-                                <p>按公式填写系数</p>
-                                <p>Pn = a + bLn/Lo + cEn/Eo + dMn/Mo</p>
-                                <p>a=0.15, b+c+d=0.85</p>
-                                <p>附计算依据</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="3.3" class="subsection">
-                    <h3 class="subsection-title">
-                        <i class="fas fa-print"></i> 3.3 格式与提交要求
-                    </h3>
-                    
-                    <div class="card-container">
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-book"></i> 装订与标识</h4>
-                            <div class="card-content">
-                                <p>技术部分与财务部分分别装订</p>
-                                <p>封面注明"TECHNICAL PART"/"FINANCIAL PART"</p>
-                                <p>每页含目录（标明页码）</p>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-usb"></i> 电子版本</h4>
-                            <div class="card-content">
-                                <p>2份USB存储</p>
-                                <p>含PDF扫描件及可编辑版</p>
-                                <p>USB需密封并标注投标人名称及标段</p>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 class="card-title"><i class="fas fa-file-signature"></i> 签署要求</h4>
-                            <div class="card-content">
-                                <p>关键页由授权代表签字并加盖公章</p>
-                                <p>联合体投标需所有成员共同签字</p>
-                                <p>截止时间: 2025年8月20日09:30</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="warning-box" style="margin-top: 20px;">
-                        <i class="fas fa-exclamation-circle"></i> 
-                        <strong>送达地址:</strong> Road Agency主楼，Antananarivo，逾期将被拒收
-                    </div>
-                </div>
+        <div class="scroll-prompt">
+            <p>向下滚动查看更多详情</p>
+            <i class="fas fa-chevron-down fa-2x"></i>
+        </div>
+    </section>
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">RNS<span>10</span></div>
+            <ul class="nav-links">
+                <li>
+                    <a href="#file-summary">文件摘要</a>
+                    <ul class="dropdown">
+                        <li><a href="#basic-info">基本信息</a></li>
+                        <li><a href="#tender-procedures">投标程序</a></li>
+                        <li><a href="#specifications">技术规范</a></li>
+                        <li><a href="#contract-clauses">合同条款</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#preparation-notes">投标准备说明</a>
+                </li>
+                <li>
+                    <a href="#bid-outline">文件结构</a>
+                    <ul class="dropdown">
+                        <li><a href="#technical-section">技术部分</a></li>
+                        <li><a href="#financial-section">财务部分</a></li>
+                        <li><a href="#format-requirements">格式要求</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
             </div>
         </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- File Summary Section -->
+        <section id="file-summary">
+            <h2 class="section-title">招标文件摘要</h2>
+            
+            <div class="card-grid">
+                <!-- Basic Info Card -->
+                <div class="card" id="basic-info">
+                    <div class="card-header">
+                        <h3>基本信息</h3>
+                        <span class="badge">第1.1节</span>
+                    </div>
+                    <div class="card-body">
+                        <p>国际招标文件，用于Andranovory至Ampanihy段RNS 10道路的沥青铺设工程。</p>
+                        
+                        <h4>关键点：</h4>
+                        <ul>
+                            <li>两个独立标段，各有具体要求</li>
+                            <li>无资格预审的双信封程序</li>
+                            <li>IDA资金支持（信贷号7060-MG和赠款号D982-MG）</li>
+                            <li>符合世界银行采购规则</li>
+                        </ul>
+                        
+                        <div class="highlight">
+                            <strong>语言要求：</strong> 所有文件和通信必须使用法语
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tender Procedures Card -->
+                <div class="card" id="tender-procedures">
+                    <div class="card-header">
+                        <h3>投标程序</h3>
+                        <span class="badge">第1.2节</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>投标人资格：</h4>
+                        <ul>
+                            <li>私营/公共企业或联合体（最多3个成员）</li>
+                            <li>无利益冲突</li>
+                            <li>未列入世界银行排除名单</li>
+                            <li>公共企业：具有法律和财务自主权</li>
+                        </ul>
+                        
+                        <h4>投标保证金：</h4>
+                        <ul>
+                            <li><strong>标段1:</strong> 45亿马达加斯加阿里亚里</li>
+                            <li><strong>标段2:</strong> 50亿马达加斯加阿里亚里</li>
+                        </ul>
+                        
+                        <h4>评标标准：</h4>
+                        <ul>
+                            <li>技术部分（40%）- 最低得分：75/100</li>
+                            <li>财务部分（60%）- 技术评审通过后开启</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Specifications Card -->
+                <div class="card" id="specifications">
+                    <div class="card-header">
+                        <h3>技术规范</h3>
+                        <span class="badge">第1.3节</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>工程范围：</h4>
+                        <ul>
+                            <li>沥青铺设（基层和面层）</li>
+                            <li>排水系统（沟渠、涵洞）</li>
+                            <li>桥梁及交叉结构</li>
+                            <li>交通标志和安全设施</li>
+                        </ul>
+                        
+                        <h4>环境、社会、健康与安全（ESHS）要求：</h4>
+                        <ul>
+                            <li>环境与社会管理计划（PGES）</li>
+                            <li>污染控制（粉尘、废水）</li>
+                            <li>社区安全及工人权利</li>
+                            <li>防止性剥削和性虐待（SEA/SH）</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Contract Clauses Card -->
+                <div class="card" id="contract-clauses">
+                    <div class="card-header">
+                        <h3>合同条款</h3>
+                        <span class="badge">第1.4节</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>一般条款：</h4>
+                        <ul>
+                            <li>基于FIDIC通用条件</li>
+                            <li>合同期限：每标段24个月</li>
+                            <li>按工程进度付款</li>
+                        </ul>
+                        
+                        <h4>特殊条款：</h4>
+                        <ul>
+                            <li>履约保证金：合同金额的10%</li>
+                            <li>环境与社会绩效保证金：合同金额的1%</li>
+                            <li>争议解决：调解后仲裁</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Preparation Notes Section -->
+        <section id="preparation-notes">
+            <h2 class="section-title">投标文件准备重要说明</h2>
+            
+            <div class="card-grid">
+                <!-- Eligibility Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>资格证明文件</h3>
+                        <span class="badge">第2.1节</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>财务文件：</h4>
+                        <ul>
+                            <li>过去3年经审计的财务报表</li>
+                            <li>流动资金证明（标段1: 350亿阿里亚里, 标段2: 400亿阿里亚里）</li>
+                            <li>10年平均年营业额（标段1: 2900亿阿里亚里, 标段2: 3300亿阿里亚里）</li>
+                        </ul>
+                        
+                        <h4>技术经验：</h4>
+                        <ul>
+                            <li>过去8年内完成3个类似项目</li>
+                            <li>每个项目金额≥235亿阿里亚里，包含≥60公里沥青道路和≥30米桥梁</li>
+                            <li>关键活动详情（GCNT生产、BBSG铺设等）</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Technical Proposal Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>技术方案</h3>
+                        <span class="badge">第2.2节</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>施工方法（25分）：</h4>
+                        <ul>
+                            <li>每个施工阶段的详细流程</li>
+                            <li>针对特殊挑战的解决方案（复杂地形、雨季）</li>
+                            <li>技术条款的参考</li>
+                        </ul>
+                        
+                        <h4>施工计划（25分）：</h4>
+                        <ul>
+                            <li>含关键里程碑的甘特图</li>
+                            <li>资源调配计划与时间表一致</li>
+                            <li>总工期≤24个月</li>
+                        </ul>
+                        
+                        <h4>ESHS管理（25分）：</h4>
+                        <ul>
+                            <li>包含预防措施的详细PGES</li>
+                            <li>道路安全和社区安全计划</li>
+                            <li>本地招聘策略</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Financial Proposal Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>财务方案</h3>
+                        <span class="badge">第2.3节</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>价格表：</h4>
+                        <ul>
+                            <li>严格按照提供的模板格式</li>
+                            <li>单位和数量与工程量清单一致</li>
+                            <li>暂定金额（标段1: 40亿阿里亚里, 标段2: 45亿阿里亚里）</li>
+                        </ul>
+                        
+                        <h4>要求：</h4>
+                        <ul>
+                            <li>所有价格含税（含8%政府采购税）</li>
+                            <li>外币种类最多3种</li>
+                            <li>四舍五入取整数</li>
+                        </ul>
+                        
+                        <h4>价格调整：</h4>
+                        <ul>
+                            <li>公式：Pn = a + bLn/Lo + cEn/Eo + dMn/Mo</li>
+                            <li>a = 0.15 (固定比例)</li>
+                            <li>b+c+d = 0.85 (劳动力、设备、材料)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Bid Outline Section -->
+        <section id="bid-outline">
+            <h2 class="section-title">投标文件结构</h2>
+            
+            <div class="card-grid">
+                <!-- Technical Section -->
+                <div class="card" id="technical-section">
+                    <div class="card-header">
+                        <h3>第一信封：技术部分</h3>
+                        <span class="badge">第3.1节</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>技术投标函：</h4>
+                        <ul>
+                            <li>使用投标人抬头纸</li>
+                            <li>注明招标编号和具体标段</li>
+                            <li>授权代表签字</li>
+                        </ul>
+                        
+                        <h4>资格证明文件：</h4>
+                        <ul>
+                            <li>注册证书和公司章程</li>
+                            <li>经审计的财务报表</li>
+                            <li>技术经验证明</li>
+                            <li>关键人员简历及证书</li>
+                            <li>设备清单及详情</li>
+                        </ul>
+                        
+                        <h4>技术方案：</h4>
+                        <ul>
+                            <li>详细的施工方法</li>
+                            <li>施工计划与时间表</li>
+                            <li>ESHS管理策略</li>
+                            <li>环境与社会管理计划（PGES）</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Financial Section -->
+                <div class="card" id="financial-section">
+                    <div class="card-header">
+                        <h3>第二信封：财务部分</h3>
+                        <span class="badge">第3.2节</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>财务投标函：</h4>
+                        <ul>
+                            <li>不含折扣的总价</li>
+                            <li>折扣条件（如有）</li>
+                            <li>确认包含所有税费</li>
+                        </ul>
+                        
+                        <h4>价格表：</h4>
+                        <ul>
+                            <li>严格按照提供的模板格式</li>
+                            <li>按工作项详细说明</li>
+                            <li>单位、数量、单价和总价</li>
+                            <li>明确标注暂定金额</li>
+                        </ul>
+                        
+                        <h4>价格调整数据：</h4>
+                        <ul>
+                            <li>填写完整的公式系数</li>
+                            <li>指定指数来源</li>
+                            <li>提供计算依据</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Format Requirements -->
+                <div class="card" id="format-requirements">
+                    <div class="card-header">
+                        <h3>格式与提交要求</h3>
+                        <span class="badge">第3.3节</span>
+                    </div>
+                    <div class="card-body">
+                        <h4>格式要求：</h4>
+                        <ul>
+                            <li>技术部分和财务部分分别装订</li>
+                            <li>封面注明"技术部分"或"财务部分"</li>
+                            <li>带页码的目录</li>
+                        </ul>
+                        
+                        <h4>电子版本：</h4>
+                        <ul>
+                            <li>2个U盘包含：
+                                <ul>
+                                    <li>与纸质版一致的扫描PDF副本</li>
+                                    <li>可编辑版本（Word/Excel）</li>
+                                </ul>
+                            </li>
+                            <li>U盘标注并密封</li>
+                        </ul>
+                        
+                        <h4>提交：</h4>
+                        <ul>
+                            <li>截止日期：2025年8月20日 09:30 (GMT+3)</li>
+                            <li>地址：道路管理局，塔那那利佛</li>
+                            <li>外层信封注明"正本投标文件"和标段号</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
     
-    <!-- 返回顶部按钮 -->
-    <div class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
+    <!-- Footer -->
+    <div class="footer">
+        <p>本项目由 <a href="http://www.cjic.cn/" target="_blank">中国江西国际经济技术合作有限公司</a> 参与投标</p>
     </div>
-
+    
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 一级导航点击事件
-            const navItems = document.querySelectorAll('.nav-item');
-            const contentSections = document.querySelectorAll('.content-section');
+        // Navigation bar activation on scroll
+        window.addEventListener('scroll', function() {
+            const heroHeight = document.getElementById('hero').offsetHeight;
+            const navbar = document.getElementById('navbar');
             
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    // 移除所有active类
-                    navItems.forEach(nav => nav.classList.remove('active'));
-                    // 添加当前active类
-                    this.classList.add('active');
-                    
-                    // 显示对应内容区
-                    const targetId = this.getAttribute('data-target');
-                    contentSections.forEach(section => {
-                        section.style.display = 'none';
-                        if (section.id === targetId) {
-                            section.style.display = 'block';
-                            section.scrollIntoView({behavior: 'smooth'});
-                        }
-                    });
-                });
-            });
-            
-            // 默认显示第一个内容区
-            document.getElementById('section-summary').style.display = 'block';
-            
-            // 侧边栏导航点击事件
-            const subNavLinks = document.querySelectorAll('.sub-nav a');
-            subNavLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // 移除所有active类
-                    subNavLinks.forEach(lnk => lnk.classList.remove('active'));
-                    // 添加当前active类
-                    this.classList.add('active');
-                    
-                    // 滚动到对应位置
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({behavior: 'smooth', block: 'start'});
-                    }
-                });
-            });
-            
-            // 返回顶部按钮功能
-            const backToTopBtn = document.querySelector('.back-to-top');
-            
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
+            if (window.scrollY >= heroHeight - 100) {
+                navbar.classList.add('active');
+            } else {
+                navbar.classList.remove('active');
+            }
+        });
+        
+        // Card fade-in animation on scroll
+        const cards = document.querySelectorAll('.card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
-            
-            backToTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+        }, {
+            threshold: 0.1
+        });
+        
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
+        });
+        
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Responsive menu adjustment on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.style.display = 'flex';
+            } else {
+                navLinks.style.display = 'none';
+            }
         });
     </script>
 </body>
